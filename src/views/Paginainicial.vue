@@ -2,13 +2,17 @@
     <div id="app">
         <Teste/>
         <Sidebar/>
+        <ModalInicial/>
     </div>
 </template>
 
 <script>
 
 import Teste from '@/components/texto.vue';
+
 import Sidebar from '@/components/Sidebar.vue';
+
+import ModalInicial from '@/components/ModalInicial.vue';
 
     export default{
 
@@ -20,11 +24,12 @@ import Sidebar from '@/components/Sidebar.vue';
         
         components: {
             Teste,
-            Sidebar
+            Sidebar,
+            ModalInicial
         }
     }
 </script>
 
 <style>
-    
+
 </style>
