@@ -8,11 +8,11 @@
 
 <script>
 
-import Teste from '@/components/texto.vue';
+import Teste from '@/components/texto';
 
-import Sidebar from '@/components/Sidebar.vue';
+import Sidebar from '@/components/Sidebar';
 
-import ModalInicial from '@/components/ModalInicial.vue';
+import ModalInicial from '@/components/ModalInicial';
 
     export default{
 

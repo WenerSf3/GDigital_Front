@@ -3,7 +3,7 @@
     <div id="Sidebar">
       <ul>
         <!--Present-->
-        <li id="present" v-b-modal.modal-1>
+        <li id="present" @click="$bvModal.show('modal-scoped')">
           <svg
             width="28"
             height="28"

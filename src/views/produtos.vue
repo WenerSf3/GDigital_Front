@@ -82,7 +82,7 @@
           { key: "id", label: "ID" },
           { key: "name_link", label: "Nome do link" },
           { key: "url_link", label: "Url" },
-          { key: "total_click", label: "clicks" },
+          { key: "total_click", label: "l" },
           { key: "created_at", label: "Data" },
           { key: "update_at", label: "Açoes" },
         ],
