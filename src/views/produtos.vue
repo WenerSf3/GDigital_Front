@@ -16,20 +16,20 @@
           {{ data.value }}
         </template>
   
-        <template #cell(name)="data">
+        <template #cell(name_link)="data">
           {{ data.value }}
         </template>
   
-        <template #cell(reference)="data">
+        <template #cell(url_link)="data">
           {{ data.value }}
         </template>
 
-        <template #cell(description)="data">
+        <template #cell(total_click)="data">
           {{ data.value }}
         </template>
   
         <template #cell(created_at)="data">
-          {{ data.value }}
+          {{ data.value | moment }}
         </template>
   
         <template #cell(update_at)="data">
@@ -70,7 +70,7 @@
   
   <script>
   import axios from "axios";
-  // import moment from "moment";
+  import moment from "moment";
   
   export default {
     data() {
@@ -80,9 +80,9 @@
         // description: "",
         fields: [
           { key: "id", label: "ID" },
-          { key: "name", label: "Nome Produto" },
-          { key: "reference", label: "Referencia" },
-          { key: "description", label: "description" },
+          { key: "name_link", label: "Nome do link" },
+          { key: "url_link", label: "Url" },
+          { key: "total_click", label: "clicks" },
           { key: "created_at", label: "Data" },
           { key: "update_at", label: "Açoes" },
         ],
@@ -90,11 +90,11 @@
         // editItem: null,
       };
     },
-    // filters: {
-    //   moment: function (date) {
-    //     return moment(date).format("DD/MM/YYYY");
-    //   },
-    // },
+    filters: {
+      moment: function (date) {
+        return moment(date).format("DD/MM/YYYY");
+      },
+    },
     methods: {
       // salvarEdicaoProduto() {
       //   this.$bvModal.hide("modal-1");
@@ -142,9 +142,9 @@
       // },
       buscaProdutos() {
         var that = this;
-        axios.get("http://127.0.0.1:8000/api/product").then(function (resp) {
+        axios.get("http://127.0.0.1:8000/api/redirect").then(function (resp) {
           console.log(resp);
-          that.items = resp.data.products;
+          that.items = resp.data.redirects;
         });
       },
     },

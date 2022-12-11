@@ -1,19 +1,30 @@
 <template>
     <div id="app">
-        <input type="text" v-model="teste">
-        <br>
-        <h3>{{ teste }}</h3>
+        <Teste/>
+        <Sidebar/>
     </div>
 </template>
 
 <script>
 
-export default{
-    
-    data: function(){
-        return{
-            teste : '',
+import Teste from '@/components/texto.vue';
+import Sidebar from '@/components/Sidebar.vue';
+
+    export default{
+
+        data: function() {
+            return{
+                teste: "",
+            }
+        },
+        
+        components: {
+            Teste,
+            Sidebar
         }
     }
-}
 </script>
+
+<style>
+    
+</style>
