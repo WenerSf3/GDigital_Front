@@ -52,42 +52,67 @@
                     {{ data.value }}
                   </p>
                 </template>
-                
+
                 <template #cell(max_click)="data">
                   <h4 class="max_click_link">{{ data.value }}</h4>
                 </template>
+
+                <template #cell(update_at)="data">
+
+                  {{ data.value }}
+
+                  <b-button
+                    @click="apagarlink(data.item.id)"
+                    variant="danger"
+                    >Deletar</b-button
+                  >
+                </template>
               </b-table>
-            <b-button class="botao_adicionar" @click="adicionar_link"
-              ><svg
-                width="14"
-                height="15"
-                viewBox="0 0 14 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.16772 1.41724V13.4172M1.16772 7.41724H13.1677"
-                  stroke="#2133D2"
-                  stroke-width="1.3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+            </div>
+            <div id="cadastrando links">
+              <div class="salvar_produto">
+                <input v-model="id_base" type="text" placeholder="URL" />
+                <input v-model="link" type="text" placeholder="URL" />
+                <input v-model="click" type="number" placeholder="click" />
+                <input
+                  v-model="max_click"
+                  type="number"
+                  placeholder="total clicks"
                 />
-              </svg>
-              Adicionar mais URL
-            </b-button>
+                <b-button variant="primary" @click="salvarlinks()"
+                  >Salvar Produto</b-button
+                >
+              </div>
+              <b-button class="botao_adicionar"
+                ><svg
+                  width="14"
+                  height="15"
+                  viewBox="0 0 14 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.16772 1.41724V13.4172M1.16772 7.41724H13.1677"
+                    stroke="#2133D2"
+                    stroke-width="1.3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Adicionar mais URL
+              </b-button>
 
-            <h3 class="url_default">URL Default</h3>
-            <p class="texto_default">
-              Essa URL será associada ao redirecionamento apenas quando todas as
-              outras chegarem ao limite de cliques. Ela será a uma url fixa sem
-              limitação.
-            </p>
-            <input
-              type="text"
-              class="add_url"
-              placeholder="Insira a URL Default"
-            />
-
+              <h3 class="url_default">URL Default</h3>
+              <p class="texto_default">
+                Essa URL será associada ao redirecionamento apenas quando todas
+                as outras chegarem ao limite de cliques. Ela será a uma url fixa
+                sem limitação.
+              </p>
+              <input
+                type="text"
+                class="add_url"
+                placeholder="Insira a URL Default"
+              />
             </div>
           </nav>
         </div>
@@ -97,19 +122,18 @@
 </template>
 
 <script>
-
 import axios from "axios";
 import moment from "moment";
 
-
 export default {
-  
-   name: "Sidecriacao",
+  name: "Sidecriacao",
   data() {
     return {
-      // name: "",
-      // reference: "",
-      // description: "",
+      id: "",
+      id_base: "",
+      link: "",
+      click: "",
+      max_click: "",
 
       // links
       fields: [
@@ -135,6 +159,33 @@ export default {
         console.log(resp);
         that.items = resp.data.links;
       });
+    },
+
+    salvarlinks() {
+      var data = {
+        id_base: this.id_base,
+        link: this.link,
+        click: this.click,
+        max_click: this.max_click,
+      };
+
+      var that = this;
+
+      axios.post("http://127.0.0.1:8000/api/links/", data).then(function () {
+        that.id_base = "";
+        that.link = "";
+        that.click = "";
+        that.max_click = "";
+        that.buscandolinks();
+      });
+    },
+    apagarlink(idlink) {
+      var that = this;
+      axios
+        .delete("http://127.0.0.1:8000/api/links/" + idlink)
+        .then(function () {
+          that.buscandolinks();
+        });
     },
   },
   mounted() {
@@ -266,16 +317,14 @@ export default {
 
   color: #81858e;
 }
-.links_crud{
+.links_crud {
   position: absolute;
   width: 14px;
   height: 16px;
   left: 34px;
   top: 268.34px;
-
 }
 .id_link {
-
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
@@ -290,7 +339,6 @@ export default {
   color: #000000;
 }
 .url_link {
-
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
@@ -302,8 +350,7 @@ export default {
 
   color: #81858e;
 }
-.max_click_link {  
-
+.max_click_link {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
@@ -357,6 +404,7 @@ export default {
   position: absolute;
   width: 550px;
   height: 36px;
+
   top: 308px;
 
   font-family: "Montserrat";
@@ -377,7 +425,7 @@ export default {
   width: 356px;
   height: 16px;
   left: 34px;
-  top: 478.37px;
+  top: 778.37px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -393,5 +441,11 @@ export default {
 
   color: #81858e;
   border: none;
+}
+.salvar_produto {
+  position: absolute;
+  width: 356px;
+  height: 16px;
+  top: 700px;
 }
 </style>
