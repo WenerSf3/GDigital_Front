@@ -14,6 +14,7 @@ import Sidebar from '@/components/Sidebar';
 
 import ModalInicial from '@/components/ModalInicial';
 
+
     export default{
 
         data: function() {

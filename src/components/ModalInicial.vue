@@ -4,7 +4,7 @@
       <template #modal-header="{ close }">
         <h5>Links de Redirecionamento 🌐</h5>
         <div class="botoes-acima">
-          <b-button id="cadastro" variant="outline-primary">
+          <b-button id="cadastro" variant="outline-primary" v-b-toggle.sidebar-right>
             Criar um Link
           </b-button>
           <b-button size="sm" @click="close()" id="fecharmodal">
@@ -68,7 +68,7 @@
           </div>
         </div>
 
-
+        <Sidecriacao/>
 
         <div class="lado-direito">
           <div class="container-link-escolhido">
@@ -86,7 +86,7 @@
           <div class="links-geradoss">
             <div class="valor-container">
 
-          <b-table small :fields="fields2" :items="items2">
+          <!-- <b-table small :fields="fields2" :items="items2">
               
               <template #cell(id)="data">
                 <h1 class="valor">0{{ data.value }}</h1>
@@ -100,7 +100,7 @@
                 <p class="link-data">{{ data.value.click }} - {{ data.value.max_click }}</p>
               </template>
               
-            </b-table>
+            </b-table> -->
             </div>
             </div>
 
@@ -125,8 +125,12 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+import Sidecriacao from '@/components/Sidecriacao';
 
 export default {
+  components:{
+    Sidecriacao
+  },
   data() {
     return {
       // name: "",
@@ -172,17 +176,17 @@ export default {
         that.items = resp.data.redirects;
       });
     },
-    buscandolinks() {
-      var that2 = this;
-      axios.get("http://127.0.0.1:8000/api/links").then(function (resp) {
-        console.log(resp);
-        that2.items2 = resp.data.links;
-      });
-    },
+    // buscandolinks() {
+    //   var that2 = this;
+    //   axios.get("http://127.0.0.1:8000/api/links").then(function (resp) {
+    //     console.log(resp);
+    //     that2.items2 = resp.data.links;
+    //   });
+    // },
   },
   mounted() {
-    // this.buscandoRedirects();
-    this.buscandoLinks();
+    this.buscandoRedirects();
+    // this.buscandoLinks();
 
   },
   
