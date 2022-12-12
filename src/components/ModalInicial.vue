@@ -4,7 +4,7 @@
       <template #modal-header="{ close }">
         <h5>Links de Redirecionamento 🌐</h5>
         <div class="botoes-acima">
-          <b-button id="cadastro" variant="outline-primary" v-b-toggle.sidebar-right>
+          <b-button id="cadastro" variant="outline-primary" v-b-toggle.sidebar-no-header>
             Criar um Link
           </b-button>
           <b-button size="sm" @click="close()" id="fecharmodal">
@@ -56,40 +56,36 @@
             </div>
           </div>
 
-          <div class="links-geradoss">
+          <div class="links-crud">
             <div class="valor-container">
 
-          <b-table small :fields="fields" :items="items">
+          <b-table small :fields="fields" :items="items" class="tabela-links">
               
               <template #cell(id)="data">
                 <h1 class="valor">0{{ data.value }}</h1>
               </template>
               
               <template #cell(link)="data">
-                <h1 class="link-gerado">{{ data.value }}</h1>
+                <h1 class="link-criado">{{ data.value }}</h1>
+              </template>
+              <template #cell(update_at)="data">
+                 <b-button id="botao" @click="editarProduto(data.item)" variant="primary">Editar</b-button>
               </template>
               
-              <template #cell(click, max_click)="data">
-                <p class="link-data">{{ data.value.click }} - {{ data.value.max_click }}</p>
+              <template #cell(click)="data">
+                <br>
+                <p class="click0">{{ data.value }}</p>
+                <!-- <p class="link-data">{{ data.value.max_click }}</p> -->
               </template>
-              
+              <p>/</p>
+              <template #cell(max_click)="data">
+                <!-- <p class="link-data">{{ data.value.click }}</p>/ -->
+                <p class="max_click">/{{ data.value }}</p>
+              </template>
           </b-table>
-          
-
+        
             </div>
           </div>
-
-          <div class="links-geradoss">
-            <div class="valor-container">
-              <h1 class="valor">01</h1>
-              <h1 class="link-gerado">
-                https://www.notion.so/Green-club-8d477635100044e4b3c5ca81c479fbdc
-              </h1>
-              <button class="botao">Editar</button>
-            </div>
-            <p class="data-gerada">02/250</p>
-          </div>
-
         </div>
       </div>
       
@@ -104,6 +100,7 @@ import Sidecriacao from '@/components/Sidecriacao';
 import Redirect from '@/components/Redirect';
 
 export default {
+  
   components:{
     Sidecriacao,
     Redirect
@@ -178,14 +175,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr calc(8rem) 1fr;
 }
-.fechar-modal {
-  position: absolute;
-  right: 40px;
-  top: 15px;
-  color: #b5b9c5;
-  cursor: pointer;
-  padding: 10px;
-}
+
 .modal {
   display: flex;
   align-content: center;
@@ -196,14 +186,26 @@ export default {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
 }
-.conteudo-modal {
-  margin: auto auto;
-  position: relative;
-  width: 93vw;
-  height: 93vh;
+.botao {
+  font-weight: 600;
+  color: #2133d2;
   background: #fff;
+  border: 1px solid #2133d2;
   border-radius: 5px;
-  padding: 50px;
+  padding: 6px 20px;
+  cursor: pointer;
+  }
+#botao {
+  font-weight: 600;
+  color: #2133d2;
+  background: #fff;
+  border: 1px solid #2133d2;
+  border-radius: 3px;
+  padding: 3px 13px;
+  cursor: pointer;
+  position: relative;
+  top: 10px;
+  left: 120px;
 }
 .flex-cotainer {
   display: flex;
@@ -271,7 +273,20 @@ export default {
 }
 .link-data {
   font-size: 12px;
-  color: #81858e;
+}
+
+.max_click {
+  font-size: 12px;
+  color: #0852ff;
+  position: relative;
+  right:200px;
+  top: 24px;
+}
+.click0 {
+  font-size: 12px;
+  color: #0852ff;
+  position: relative;
+  right:185px;
 }
 .detalhes-link {
   display: flex;
@@ -283,7 +298,7 @@ export default {
   font-size: 13px;
   color: #81858e;
   position: relative;
-  left:-150px;
+  left:-140px;
 }
 .link-cliques {
   font-size: 14px;
@@ -324,35 +339,22 @@ export default {
 .link-redirect-detalhes {
   color: #2133d2;
 }
-.botao-ativo {
-  font-weight: 600;
-  color: #2133d2;
-  background: rgba(33, 51, 210, 0.1);
-  border: none;
-  border-radius: 5px;
-  padding: 6px 20px;
-  cursor: pointer;
-}
-.botao {
-  font-weight: 600;
-  color: #2133d2;
-  background: #fff;
-  border: 1px solid #2133d2;
-  border-radius: 5px;
-  padding: 6px 20px;
-  cursor: pointer;
-}
+
 .valor {
   font-weight: 600;
   font-size: 13px;
   color: #2133d2;
+  position: relative;
+  top: 10px;
 }
-.links-geradoss {
+.links-crud {
   margin-top: 25px;
 }
-.link-gerado {
+.link-criado {
   font-size: 12px;
   color: #81858e;
+  position: relative;
+  top: 10px;
 }
 .data-gerada {
   margin-top: 5px;
@@ -365,5 +367,9 @@ export default {
   align-items: center;
   flex: 1;
   gap: 20px;
+}
+.tabela-links{
+  position: relative;
+  top: -35px;
 }
 </style>
