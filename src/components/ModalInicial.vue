@@ -37,35 +37,8 @@
             <h1 class="quantidade-links">04 links</h1>
             <p class="tempo">Clique em tempo real</p>
           </div>
-
           <!--esqueda superior -->
-
-          <div class="container-link">
-            <div class="flex-1">
-              <div class="link">
-              
-              <b-table small :fields="fields" :items="items">
-              
-                <template #cell(name_link)="data">
-                  <h1 class="link-nome">{{ data.value }}</h1>
-                </template>
-
-                <template #cell(created_at)="data">
-                  <p class="link-data">{{ data.value | moment }}</p>
-                </template>
-          
-                <template #cell(url_link)="data">
-                  <p class="link-redirect"><br><br>{{ data.value }}</p>
-                </template>
-
-                <template #cell(total_click)="data">
-                  <p class="link-cliques">👉 02/{{ data.value }}</p>
-                </template>
-                
-              </b-table>
-              </div>
-            </div>
-          </div>
+          <Redirect/>
         </div>
 
         <Sidecriacao/>
@@ -86,7 +59,7 @@
           <div class="links-geradoss">
             <div class="valor-container">
 
-          <!-- <b-table small :fields="fields2" :items="items2">
+          <b-table small :fields="fields" :items="items">
               
               <template #cell(id)="data">
                 <h1 class="valor">0{{ data.value }}</h1>
@@ -100,9 +73,11 @@
                 <p class="link-data">{{ data.value.click }} - {{ data.value.max_click }}</p>
               </template>
               
-            </b-table> -->
+          </b-table>
+          
+
             </div>
-            </div>
+          </div>
 
           <div class="links-geradoss">
             <div class="valor-container">
@@ -126,10 +101,12 @@
 import axios from "axios";
 import moment from "moment";
 import Sidecriacao from '@/components/Sidecriacao';
+import Redirect from '@/components/Redirect';
 
 export default {
   components:{
-    Sidecriacao
+    Sidecriacao,
+    Redirect
   },
   data() {
     return {
@@ -137,28 +114,17 @@ export default {
       // reference: "",
       // description: "",
 
-
-      // Redirects
-      fields: [
-        // { key: "id", label: "" },
-        { key: "name_link", label: "" },
-        { key: "created_at", label: "" },
-        { key: "url_link", label: "" },
-        { key: "total_click", label: "" },
-        { key: "update_at", label: "" },
-      ],
-
       // links
-      fields2: [
-        // { key: "id", label: "" },
-        { key: "id_base", label: "" },
+      fields: [
+        { key: "id", label: "" },
+        // { key: "id_base", label: "" },
         { key: "link", label: "" },
         { key: "click", label: "" },
         { key: "max_click", label: "" },
         { key: "update_at", label: "" },
       ],
+
       items: [],
-      items2: [],
       // editItem: null,
     };
   },
@@ -168,28 +134,17 @@ export default {
     },
   },
   methods: {
-    buscandoRedirects() {
-      
+    buscandolinks() {
       var that = this;
-      axios.get("http://127.0.0.1:8000/api/redirect").then(function (resp) {
+      axios.get("http://127.0.0.1:8000/api/links").then(function (resp) {
         console.log(resp);
-        that.items = resp.data.redirects;
+        that.items = resp.data.links;
       });
     },
-    // buscandolinks() {
-    //   var that2 = this;
-    //   axios.get("http://127.0.0.1:8000/api/links").then(function (resp) {
-    //     console.log(resp);
-    //     that2.items2 = resp.data.links;
-    //   });
-    // },
   },
   mounted() {
-    this.buscandoRedirects();
-    // this.buscandoLinks();
-
+    this.buscandolinks();
   },
-  
 };
 </script>
 
@@ -338,6 +293,9 @@ export default {
 }
 .lado-direito {
   padding: 50px;
+  position: relative;
+  left:-120px;
+  top: 10px;
 }
 .container-link-escolhido {
   border-bottom: 1px solid #ededf0;
