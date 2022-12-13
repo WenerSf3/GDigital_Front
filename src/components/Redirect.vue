@@ -4,11 +4,11 @@
       <table>
         <tbody>
           <template v-for="item in items">
-            <div id="teste-teste">
+            <div id="teste-teste" @click="tabela(item.id)">
               <div class="link-nome">{{ item.name_link }}</div>
               <div class="link-data">{{ item.created_at | moment }}</div>
               <div id="link-redirect">{{ item.url_link }}</div>
-              <div id="link-cliques">👉  45/{{ item.total_click }}</div>
+              <div id="link-cliques">👉 12/{{ item.total_click }}</div>
             </div>
           </template>
         </tbody>
@@ -24,6 +24,7 @@ export default {
   name: "Redirect",
   data() {
     return {
+      click: 0,
       fields: [
         // { key: "id", label: "" },
         { key: "name_link", label: "" },
