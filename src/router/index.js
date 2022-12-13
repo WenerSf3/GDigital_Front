@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import PaginaInicial from '../views/Paginainicial.vue';
-import produtos2 from '../views/produtos.vue';
-import teste from '../views/teste.vue';
 
 Vue.use(VueRouter)
 
@@ -11,16 +9,6 @@ const routes = [
     path: '/',
     name: 'paginainicial',
     component: PaginaInicial
-  },
-  {
-    path: '/produtos',
-    name: 'produtos',
-    component: produtos2
-  },
-  {
-    path: '/teste',
-    name: 'teste',
-    component: teste
   },
   {
     path: '/about',

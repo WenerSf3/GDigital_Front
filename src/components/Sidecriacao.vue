@@ -99,13 +99,14 @@
                     >Salvar</b-button
                   >
                 </div>
-              </div>
-            </div>
             <h3 class="url_default">URL Default</h3>
             <p class="texto_default">
               Essa URL será associada ao redirecionamento apenas quando todas as
               outras chegarem ao limite de cliques. Ela será a uma url fixa sem
               limitação.
+            </p>
+              </div>
+            </div>
             <!-- <b-button class="botao_adicionar"
                 ><svg
                   width="14"
@@ -125,7 +126,6 @@
                 Adicionar mais URL
               </b-button> -->
 
-            </p>
             <!-- <input
                 type="text"
                 class="add_url"
@@ -431,10 +431,10 @@ export default {
 }
 .texto_default {
   position: relative;
-  width: 550px;
+  width: 490px;
   height: 36px;
 
-  top: 310px;
+  top: 300px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -454,7 +454,7 @@ export default {
   width: 356px;
   height: 16px;
   left: 34px;
-  top: 778.37px;
+  top: 490px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -478,7 +478,7 @@ export default {
   position: relative;
   width: 356px;
   height: 16px;
-  top: 250px;
+  top: -30px;
   display: flex;
   gap: 10px;
 }

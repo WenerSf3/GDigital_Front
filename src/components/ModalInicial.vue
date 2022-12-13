@@ -69,7 +69,7 @@
                 <h1 class="link-criado">{{ data.value }}</h1>
               </template>
               <template #cell(update_at)="data">
-                 <b-button id="botao" @click="editarProduto(data.item)" variant="primary">Editar</b-button>
+                 <b-button id="botao" @click="editarlink(data.item)" variant="primary">Editar</b-button>
               </template>
               
               <template #cell(click)="data">
@@ -83,6 +83,25 @@
                 <p class="max_click">/{{ data.value }}</p>
               </template>
           </b-table>
+          <b-modal id="modal-1" title="Edição de Links" hide-footer>
+            <div v-if="EditarLinkRedirect">
+              <input v-model="EditarLinkRedirect.link" type="text" placeholder="Nome" />
+              <input
+                v-model="EditarLinkRedirect.click"
+                type="text"
+                placeholder="Referencia"/>
+              <input
+                v-model="EditarLinkRedirect.max_click"
+                type="text"
+                placeholder="description"
+              />
+            </div>
+      
+            <br />
+      
+            <b-button variant="primary" @click="saveEdicao"
+              >Salvar link</b-button>
+      </b-modal>
         
             </div>
           </div>
@@ -107,9 +126,9 @@ export default {
   },
   data() {
     return {
-      // name: "",
-      // reference: "",
-      // description: "",
+      link: "",
+      click: "",
+      max_click: "",
 
       // links
       fields: [
@@ -122,7 +141,7 @@ export default {
       ],
 
       items: [],
-      // editItem: null,
+      EditarLinkRedirect: null,
     };
   },
   filters: {
@@ -131,6 +150,26 @@ export default {
     },
   },
   methods: {
+    saveEdicao() {
+      this.$bvModal.hide("modal-1");
+
+      var data = {
+        name: this.EditarLinkRedirect.link,
+        reference: this.EditarLinkRedirect.click,
+        description: this.EditarLinkRedirect.max_click,
+      };
+
+      axios
+        .put("http://127.0.0.1:8000/api/redirect/" + this.EditarLinkRedirect.id, data)
+        .then(function () {
+          that.buscandolinks();
+        });
+    },
+    editarlink(item) {
+      this.$bvModal.show("modal-1");
+
+      this.EditarLinkRedirect = item;
+    },
     buscandolinks() {
       var that = this;
       axios.get("http://127.0.0.1:8000/api/links").then(function (resp) {
