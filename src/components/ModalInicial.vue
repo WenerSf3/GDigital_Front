@@ -64,8 +64,7 @@
                 small
                 :fields="fields"
                 :items="items"
-                class="tabela-links"
-              >
+                class="tabela-links">
                 <template #cell(id)="data">
                   <h1 class="valor">0{{ data.value }}</h1>
                 </template>
@@ -73,12 +72,12 @@
                 <template #cell(link)="data">
                   <h1 class="link-criado">{{ data.value }}</h1>
                 </template>
+
                 <template #cell(update_at)="data">
                   <b-button
                     id="botao"
                     @click="editarlink(data.item)"
-                    variant="primary"
-                    >Editar</b-button
+                    variant="primary">Editar</b-button
                   >
                 </template>
 

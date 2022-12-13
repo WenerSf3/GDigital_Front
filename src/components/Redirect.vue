@@ -1,31 +1,24 @@
 <template>
   <div class="container-link">
-    <div class="flex-1">
-      <div class="link">
-        <b-table small :fields="fields" :items="items" class="redirect_table" @click="tabelas_links(data.item.id)" >
-          <template #cell(name_link)="data">
-            <h1 class="link-nome">{{ data.value }}</h1>
+    <div class="link">
+      <table>
+        <tbody>
+          <template v-for="item in items">
+            <div id="teste-teste">
+              <div class="link-nome">{{ item.name_link }}</div>
+              <div class="link-data">{{ item.created_at | moment }}</div>
+              <div id="link-redirect">{{ item.url_link }}</div>
+              <div id="link-cliques">👉  45/{{ item.total_click }}</div>
+            </div>
           </template>
-
-          <template #cell(created_at)="data">
-            <p class="link-data">{{ data.value | moment }}</p>
-          </template>
-
-          <template #cell(url_link)="data">
-            <p class="link-redirect"><br /><br />{{ data.value }}</p>
-          </template>
-
-          <template #cell(total_click)="data">
-            <p class="link-cliques">👉 02/{{ data.value }}</p>
-          </template>
-        </b-table>
-      </div>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 <script>
 import axios from "axios";
-import moment from "moment"; 
+import moment from "moment";
 
 export default {
   name: "Redirect",
@@ -57,15 +50,13 @@ export default {
         that.items = resp.data.redirects;
       });
     },
-    tabelas_links(idlink){
+    tabelas_links(idlink) {
       console.log("funcionando");
       var that = this;
-      axios
-        .get("http://127.0.0.1:8000/api/links/" + idlink)
-        .then(function () {
-          that.buscandoredirects();
-        });
-    }
+      axios.get("http://127.0.0.1:8000/api/links/" + idlink).then(function () {
+        that.buscandoredirects();
+      });
+    },
   },
   mounted() {
     this.buscandoRedirects();
@@ -74,28 +65,51 @@ export default {
 </script>
 
 <style>
-    .container-link {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-bottom: 1px solid #ededf0;
-    }
-    .flex-1 {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    }
-    .link {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    }
-    .redirect_table1{
-      border:none;
-      cursor: pointer;
-    }
-    .redirect_table:hover{
-      border:1px solid rgba(0, 208, 255, 0.393);
-      cursor: pointer;
-    }
+.container-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #ededf0;
+}
+.redirect_table1 {
+  border: none;
+  cursor: pointer;
+}
+.redirect_table:hover {
+  border: 1px solid rgba(0, 208, 255, 0.393);
+  cursor: pointer;
+}
+#teste-teste {
+  border: none;
+  width: 430px;
+}
+#teste-teste:hover {
+  border: 1px solid blue;
+  width: 430px;
+  color: blue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.link-nome {
+  position: relative;
+}
+.link-data {
+  position: relative;
+  top: -18px;
+  left: 100px;
+}
+#link-redirect {
+  position: relative;
+  top: 10px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+#link-cliques {
+  position: relative;
+  left: 330px;
+  right: 0px;
+  bottom: 0px;
+  top: -10px;
+}
 </style>

@@ -193,8 +193,8 @@ export default {
         that.link = "";
         that.click = "";
         that.max_click = "";
-        that.buscandolinks();
       });
+        that.buscandolinks();
     },
     apagarlink(idlink) {
       var that = this;
