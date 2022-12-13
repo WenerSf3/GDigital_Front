@@ -4,7 +4,11 @@
       <template #modal-header="{ close }">
         <h5>Links de Redirecionamento 🌐</h5>
         <div class="botoes-acima">
-          <b-button id="cadastro" variant="outline-primary" v-b-toggle.sidebar-no-header>
+          <b-button
+            id="cadastro"
+            variant="outline-primary"
+            v-b-toggle.sidebar-no-header
+          >
             Criar um Link
           </b-button>
           <b-button size="sm" @click="close()" id="fecharmodal">
@@ -38,76 +42,97 @@
             <p class="tempo">Clique em tempo real</p>
           </div>
           <!--esqueda superior -->
-          <Redirect/>
+          <Redirect />
         </div>
 
-        <Sidecriacao/>
+        <Sidecriacao />
 
         <div class="lado-direito">
           <div class="container-link-escolhido">
             <div class="link-escolhido-container">
               <h1 class="link-escolhido">Link Legal</h1>
-              <p class="link-escolhido-data">Criado em 04/01/2020 ás 10:36</p>
+              <p class="link-escolhido-data">Criado em 11/12/2022</p>
             </div>
             <div class="link-escolhido-detalhes">
-              <p class="link-redirect-detalhes">redirect.gdigi.al/3hNU8HO</p>
-              <button class="botao">Copiar</button>
-              <button class="botao">Editar</button>
+              <p class="link-redirect-detalhes">www.google.com</p>
             </div>
           </div>
 
           <div class="links-crud">
             <div class="valor-container">
+              <b-table
+                small
+                :fields="fields"
+                :items="items"
+                class="tabela-links"
+              >
+                <template #cell(id)="data">
+                  <h1 class="valor">0{{ data.value }}</h1>
+                </template>
 
-          <b-table small :fields="fields" :items="items" class="tabela-links">
-              
-              <template #cell(id)="data">
-                <h1 class="valor">0{{ data.value }}</h1>
-              </template>
-              
-              <template #cell(link)="data">
-                <h1 class="link-criado">{{ data.value }}</h1>
-              </template>
-              <template #cell(update_at)="data">
-                 <b-button id="botao" @click="editarlink(data.item)" variant="primary">Editar</b-button>
-              </template>
-              
-              <template #cell(click)="data">
-                <br>
-                <p class="click0">{{ data.value }}</p>
-                <!-- <p class="link-data">{{ data.value.max_click }}</p> -->
-              </template>
-              <p>/</p>
-              <template #cell(max_click)="data">
-                <!-- <p class="link-data">{{ data.value.click }}</p>/ -->
-                <p class="max_click">/{{ data.value }}</p>
-              </template>
-          </b-table>
-          <b-modal id="modal-1" title="Edição de Links" hide-footer>
-            <div v-if="EditarLinkRedirect">
-              <input v-model="EditarLinkRedirect.link" type="text" placeholder="Nome" />
-              <input
-                v-model="EditarLinkRedirect.click"
-                type="text"
-                placeholder="Referencia"/>
-              <input
-                v-model="EditarLinkRedirect.max_click"
-                type="text"
-                placeholder="description"
-              />
-            </div>
-      
-            <br />
-      
-            <b-button variant="primary" @click="saveEdicao"
-              >Salvar link</b-button>
-      </b-modal>
-        
+                <template #cell(link)="data">
+                  <h1 class="link-criado">{{ data.value }}</h1>
+                </template>
+                <template #cell(update_at)="data">
+                  <b-button
+                    id="botao"
+                    @click="editarlink(data.item)"
+                    variant="primary"
+                    >Editar</b-button
+                  >
+                </template>
+
+                <template #cell(click)="data">
+                  <br />
+                  <p class="click0">{{ data.value }}</p>
+                  <!-- <p class="link-data">{{ data.value.max_click }}</p> -->
+                </template>
+                <p>/</p>
+                <template #cell(max_click)="data">
+                  <!-- <p class="link-data">{{ data.value.click }}</p>/ -->
+                  <p class="max_click">/{{ data.value }}</p>
+                </template>
+              </b-table>
+              <br />
+              <b-modal id="modal-1" title="Edição de Links" hide-footer>
+                <div class="edit">
+                  
+                  <label id="ua">Url do link</label>
+                  <label id="ub">Click</label>
+                  <label id="uc">Max Click</label>
+                </div>  
+                <div v-if="EditarLinkRedirect" class="edit">
+                  
+                  <input
+                    v-model="EditarLinkRedirect.link"
+                    type="text"
+                    id="input_url"
+                    placeholder="Link"
+                  />
+                  <input
+                    v-model="EditarLinkRedirect.click"
+                    type="text"
+                    placeholder="Clicks"
+                    id="input_click"
+                  />
+                  <input
+                    v-model="EditarLinkRedirect.max_click"
+                    type="text"
+                    id="input_max_click"
+                    placeholder="Total-clicks"
+                  />
+                </div>
+
+                <br />
+
+                <b-button variant="primary" @click="saveEdicao"
+                  >Salvar link</b-button
+                >
+              </b-modal>
             </div>
           </div>
         </div>
       </div>
-      
     </b-modal>
   </div>
 </template>
@@ -115,14 +140,13 @@
 <script>
 import axios from "axios";
 import moment from "moment";
-import Sidecriacao from '@/components/Sidecriacao';
-import Redirect from '@/components/Redirect';
+import Sidecriacao from "@/components/Sidecriacao";
+import Redirect from "@/components/Redirect";
 
 export default {
-  
-  components:{
+  components: {
     Sidecriacao,
-    Redirect
+    Redirect,
   },
   data() {
     return {
@@ -160,7 +184,10 @@ export default {
       };
 
       axios
-        .put("http://127.0.0.1:8000/api/redirect/" + this.EditarLinkRedirect.id, data)
+        .put(
+          "http://127.0.0.1:8000/api/redirect/" + this.EditarLinkRedirect.id,
+          data
+        )
         .then(function () {
           that.buscandolinks();
         });
@@ -233,7 +260,7 @@ export default {
   border-radius: 5px;
   padding: 6px 20px;
   cursor: pointer;
-  }
+}
 #botao {
   font-weight: 600;
   color: #2133d2;
@@ -318,14 +345,15 @@ export default {
   font-size: 12px;
   color: #0852ff;
   position: relative;
-  right:200px;
-  top: 24px;
+  right: 200px;
+  top: 34px;
 }
 .click0 {
   font-size: 12px;
   color: #0852ff;
   position: relative;
-  right:185px;
+  right: 185px;
+  top: 10px;
 }
 .detalhes-link {
   display: flex;
@@ -337,18 +365,18 @@ export default {
   font-size: 13px;
   color: #81858e;
   position: relative;
-  left:-140px;
+  left: -140px;
 }
 .link-cliques {
   font-size: 14px;
   color: #81858e;
   position: relative;
-  top:40px;
+  top: 40px;
 }
 .lado-direito {
   padding: 50px;
   position: relative;
-  left:-120px;
+  left: -120px;
   top: 10px;
 }
 .container-link-escolhido {
@@ -407,9 +435,35 @@ export default {
   flex: 1;
   gap: 20px;
 }
-.tabela-links{
+.tabela-links {
   position: relative;
   top: -35px;
   /* background-color: red; */
 }
+.edit{
+  display: flex;
+  gap: 10px;
+}
+#input_url {
+  width: 200px;
+}
+#input_max_click {
+  width: 50px;
+}
+#input_click {
+  width: 50px;
+}
+#ua{
+  position: relative;
+  left:20px;
+}
+#ub{
+  position: relative;
+  left:132px;
+}
+#uc{
+  position: relative;
+  left:135px;
+}
+
 </style>

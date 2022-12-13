@@ -92,22 +92,10 @@ export default {
     }
     .redirect_table1{
       border:none;
-
-    }
-    .redirect_table2{
-      border:none;
-
-    }
-    .redirect_table3{
-      border:none;
-
-    }
-    .redirect_table4{
-      border:none;
-
+      cursor: pointer;
     }
     .redirect_table:hover{
-      border:1px solid blue;
-
+      border:1px solid rgba(0, 208, 255, 0.393);
+      cursor: pointer;
     }
 </style>
