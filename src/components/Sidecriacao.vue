@@ -58,32 +58,55 @@
                 </template>
 
                 <template #cell(update_at)="data">
-
                   {{ data.value }}
 
-                  <b-button
-                    @click="apagarlink(data.item.id)"
-                    variant="danger"
+                  <b-button @click="apagarlink(data.item.id)" variant="danger"
                     >Deletar</b-button
                   >
                 </template>
               </b-table>
-            </div>
-            <div id="cadastrando links">
-              <div class="salvar_produto">
-                <input v-model="id_base" type="text" placeholder="URL" />
-                <input v-model="link" type="text" placeholder="URL" />
-                <input v-model="click" type="number" placeholder="click" />
-                <input
-                  v-model="max_click"
-                  type="number"
-                  placeholder="total clicks"
-                />
-                <b-button variant="primary" @click="salvarlinks()"
-                  >Salvar Produto</b-button
-                >
+              <div id="cadastrando_links">
+                <div class="salvar_link">
+                  <input
+                    v-model="id_base"
+                    type="text"
+                    id="input_id"
+                    placeholder="id base"
+                  />
+                  <input
+                    v-model="link"
+                    type="text"
+                    value="0"
+                    id="input_url"
+                    placeholder="URL"
+                  />
+                  <input
+                    v-model="click"
+                    type="number"
+                    id="input_max_click"
+                    placeholder="click"
+                  />
+                  <input
+                    v-model="max_click"
+                    type="number"
+                    id="input_click"
+                    placeholder="total clicks"
+                  />
+                  <b-button
+                    variant="primary"
+                    style="height: 40px"
+                    @click="salvarlinks()"
+                    >Salvar</b-button
+                  >
+                </div>
               </div>
-              <b-button class="botao_adicionar"
+            </div>
+            <h3 class="url_default">URL Default</h3>
+            <p class="texto_default">
+              Essa URL será associada ao redirecionamento apenas quando todas as
+              outras chegarem ao limite de cliques. Ela será a uma url fixa sem
+              limitação.
+            <!-- <b-button class="botao_adicionar"
                 ><svg
                   width="14"
                   height="15"
@@ -100,20 +123,14 @@
                   />
                 </svg>
                 Adicionar mais URL
-              </b-button>
+              </b-button> -->
 
-              <h3 class="url_default">URL Default</h3>
-              <p class="texto_default">
-                Essa URL será associada ao redirecionamento apenas quando todas
-                as outras chegarem ao limite de cliques. Ela será a uma url fixa
-                sem limitação.
-              </p>
-              <input
+            </p>
+            <!-- <input
                 type="text"
                 class="add_url"
                 placeholder="Insira a URL Default"
-              />
-            </div>
+              /> -->
           </nav>
         </div>
       </template>
@@ -129,7 +146,7 @@ export default {
   name: "Sidecriacao",
   data() {
     return {
-      id: "",
+      id: "0",
       id_base: "",
       link: "",
       click: "",
@@ -187,6 +204,19 @@ export default {
           that.buscandolinks();
         });
     },
+    salvarEdicao() {
+      var data = {
+        name: this.editItem.name,
+        reference: this.editItem.reference,
+        description: this.editItem.description,
+      };
+
+      axios
+        .put("http://127.0.0.1:8000/api/product/" + this.editItem.id, data)
+        .then(function () {
+          that.buscandolinks();
+        });
+    },
   },
   mounted() {
     this.buscandolinks();
@@ -199,7 +229,7 @@ export default {
 
 #sidebar-no-header-title {
   padding: 10px;
-  position: absolute;
+  position: relative;
 }
 .header-side {
   background-color: #191b28;
@@ -210,7 +240,7 @@ export default {
   width: 620px;
 }
 #header-side-title {
-  position: absolute;
+  position: relative;
   width: 131px;
   height: 20px;
   left: 34px;
@@ -230,19 +260,19 @@ export default {
   color: #ffffff;
 }
 #x-side {
-  position: absolute;
+  position: relative;
   width: 15px;
   height: 15px;
-  left: 569px;
-  top: 22.56px;
+  left: 550px;
+  top: -12px;
   cursor: pointer;
 }
 .titulo_link {
-  position: absolute;
+  position: relative;
   width: 94px;
   height: 16px;
-  left: 34px;
-  top: 79.23px;
+  left: 0px;
+  top: 20px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -258,11 +288,11 @@ export default {
   color: #333333;
 }
 .link_legal {
-  position: absolute;
+  position: relative;
   width: 69px;
   height: 16px;
-  left: 34px;
-  top: 115.85px;
+  left: 0px;
+  top: 30px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -278,11 +308,11 @@ export default {
   color: #81858e;
 }
 .url_original {
-  position: absolute;
+  position: relative;
   width: 91px;
   height: 17px;
-  left: 34px;
-  top: 176.5px;
+  left: 0px;
+  top: 40px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -298,11 +328,11 @@ export default {
   color: #2133d2;
 }
 .texto-informativo {
-  position: absolute;
+  position: relative;
   width: 550px;
   height: 36px;
-  left: 34px;
-  top: 199.24px;
+  left: 0px;
+  top: 40px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -318,11 +348,11 @@ export default {
   color: #81858e;
 }
 .links_crud {
-  position: absolute;
-  width: 14px;
+  position: relative;
+  width: 550px;
   height: 16px;
-  left: 34px;
-  top: 268.34px;
+  left: 0px;
+  top: 60px;
 }
 .id_link {
   font-family: "Montserrat";
@@ -366,12 +396,10 @@ export default {
 }
 .botao_adicionar {
   box-sizing: border-box;
-
-  position: absolute;
+  position: relative;
   width: 184.84px;
   height: 35px;
-  left: 34px;
-  top: 230px;
+  top: 270px;
 
   font-weight: 600;
   color: #2133d2;
@@ -382,10 +410,11 @@ export default {
   cursor: pointer;
 }
 .url_default {
-  position: absolute;
+  position: relative;
   width: 90px;
   height: 17px;
-  top: 283px;
+  top: 290px;
+  left: 0px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -401,11 +430,11 @@ export default {
   color: #2133d2;
 }
 .texto_default {
-  position: absolute;
+  position: relative;
   width: 550px;
   height: 36px;
 
-  top: 308px;
+  top: 310px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -442,10 +471,42 @@ export default {
   color: #81858e;
   border: none;
 }
-.salvar_produto {
-  position: absolute;
+.cadastrando_links{
+  position: relative;
+}
+.salvar_link {
+  position: relative;
   width: 356px;
   height: 16px;
-  top: 700px;
+  top: 250px;
+  display: flex;
+  gap: 10px;
+}
+.salvar_link input {
+  width: 250px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+#input_id {
+  width: 65px;
+}
+#input_url {
+  width: 300px;
+}
+#input_max_click {
+  width: 50px;
+}
+#input_click {
+  width: 50px;
+}
+.adicionar_elementos {
+  position: relative;
+  top: 250px;
+  display: flex;
+}
+#input_url {
+  position: relative;
+  width: 356px;
 }
 </style>

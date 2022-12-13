@@ -2,7 +2,7 @@
   <div class="container-link">
     <div class="flex-1">
       <div class="link">
-        <b-table small :fields="fields" :items="items">
+        <b-table small :fields="fields" :items="items" class="redirect_table" @click="tabelas_links(data.item.id)" >
           <template #cell(name_link)="data">
             <h1 class="link-nome">{{ data.value }}</h1>
           </template>
@@ -57,6 +57,15 @@ export default {
         that.items = resp.data.redirects;
       });
     },
+    tabelas_links(idlink){
+      console.log("funcionando");
+      var that = this;
+      axios
+        .get("http://127.0.0.1:8000/api/links/" + idlink)
+        .then(function () {
+          that.buscandoredirects();
+        });
+    }
   },
   mounted() {
     this.buscandoRedirects();
@@ -80,5 +89,25 @@ export default {
     display: flex;
     align-items: center;
     gap: 20px;
+    }
+    .redirect_table1{
+      border:none;
+
+    }
+    .redirect_table2{
+      border:none;
+
+    }
+    .redirect_table3{
+      border:none;
+
+    }
+    .redirect_table4{
+      border:none;
+
+    }
+    .redirect_table:hover{
+      border:1px solid blue;
+
     }
 </style>
