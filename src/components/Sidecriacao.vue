@@ -124,9 +124,9 @@
                   />
                 </svg>
                 Adicionar mais URL
-              </b-button> -->
+              </b-button> 
 
-            <!-- <input
+            <input
                 type="text"
                 class="add_url"
                 placeholder="Insira a URL Default"

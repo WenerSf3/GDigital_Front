@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Tela usada apenas para exemplo de navegação.
-Clique na Logo para seguir o fluxo</h3>
+Clique na Logo para seguir o fluxo</h3>a
     </div>
 </template>
 

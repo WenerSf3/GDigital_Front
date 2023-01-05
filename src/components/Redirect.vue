@@ -4,11 +4,12 @@
       <table>
         <tbody>
           <template v-for="item in items">
-            <div id="teste-teste" @click="tabela(item.id)">
+            <div id="teste-teste" @click="tabela(item.id)" class="container-left">
               <div class="link-nome">{{ item.name_link }}</div>
               <div class="link-data">{{ item.created_at | moment }}</div>
               <div id="link-redirect">{{ item.url_link }}</div>
               <div id="link-cliques">👉 12/{{ item.total_click }}</div>
+              <br>
             </div>
           </template>
         </tbody>

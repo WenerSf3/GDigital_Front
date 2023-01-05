@@ -10,7 +10,7 @@
 
 import Teste from '@/components/texto';
 
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/sidebar';
 
 import ModalInicial from '@/components/ModalInicial';
 
