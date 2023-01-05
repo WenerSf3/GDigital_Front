@@ -136,61 +136,55 @@ ul {
   list-style-type: none;
 }
 #present {
-  position: absolute;
+  position: relative;
   width: 25px;
   height: 25px;
-  left: 34.48px;
+  left: 4px;
   top: 57.96px;
   cursor: pointer;
 
   /* border: 2px solid #2133D2; */
 }
 #capelo {
-  position: absolute;
+  position: relative;
   width: 22.9px;
   height: 19.62px;
-  left: 37.29px;
-  top: 174.67px;
+  left: 4px;
+  top: 140px;
 
-  /* border: 1.8px solid #81858e; */
 }
 #trofel {
-  position: absolute;
+  position: relative;
   width: 21.26px;
   height: 21.26px;
-  left: 38.11px;
-  top: 254.3px;
+  left: 4px;
+  top: 200px;
 
-  /* border: 1.8px solid #81858e; */
 }
 #usuario {
-  position: absolute;
+  position: relative;
   width: 19.63px;
   height: 21.26px;
-  left: 38.92px;
-  top: 335.56px;
+  left: 4px;
+  top: 260px;
 
-  /* border: 1.8px solid #81858e; */
 }
 #chat {
-  position: absolute;
+  position: relative;
   width: 20.44px;
   height: 20.44px;
-  left: 38.52px;
-  top: 417.63px;
+  left: 4px;
+  top: 320px;
 
-  /* border: 1.8px solid #81858e; */
 }
 #circle {
   box-sizing: border-box;
 
-  position: absolute;
+  position: relative;
   width: 35px;
   height: 35px;
-  left: 31.24px;
-  top: 608px;
+  left: 0px;
+  top: 440px;
 
-  /* background: rgba(129, 133, 142, 0.2); */
-  border: 1px solid #81858e;
 }
 </style>

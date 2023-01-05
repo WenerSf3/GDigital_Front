@@ -17,6 +17,8 @@
     </div>
   </div>
 </template>
+
+
 <script>
 import axios from "axios";
 import moment from "moment";
@@ -25,16 +27,6 @@ export default {
   name: "Redirect",
   data() {
     return {
-      click: 0,
-      fields: [
-        // { key: "id", label: "" },
-        { key: "name_link", label: "" },
-        { key: "created_at", label: "" },
-        { key: "url_link", label: "" },
-        { key: "total_click", label: "" },
-        { key: "update_at", label: "" },
-      ],
-
       items: [],
       // editItem: null,
     };
@@ -45,26 +37,34 @@ export default {
     },
   },
   methods: {
-    buscandoRedirects() {
+    /* Busca Redirects */
+    GetRedirects() {
       var that = this;
-      axios.get("http://127.0.0.1:8000/api/redirect").then(function (resp) {
-        console.log(resp);
-        that.items = resp.data.redirects;
+      axios.get
+        ("http://127.0.0.1:8000/api/redirect")
+        .then(function (resp) {
+            that.items = resp.data.redirects;
       });
     },
+
+    /* Busca Links a Direita */
     tabelas_links(idlink) {
-      console.log("funcionando");
+      
       var that = this;
-      axios.get("http://127.0.0.1:8000/api/links/" + idlink).then(function () {
-        that.buscandoredirects();
-      });
+      axios.get
+        ("http://127.0.0.1:8000/api/links/" + idlink)
+        .then(function (){
+            that.Getredirects();
+    });
+
     },
   },
   mounted() {
-    this.buscandoRedirects();
+    this.GetRedirects();
   },
 };
 </script>
+
 
 <style>
 .container-link {

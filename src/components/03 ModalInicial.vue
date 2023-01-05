@@ -139,8 +139,8 @@
 <script>
 import axios from "axios";
 import moment from "moment";
-import Sidecriacao from "@/components/Sidecriacao";
-import Redirect from "@/components/Redirect";
+import Sidecriacao from "@/components/05 Sidecriacao";
+import Redirect from "@/components/04 Redirect";
 
 export default {
   components: {

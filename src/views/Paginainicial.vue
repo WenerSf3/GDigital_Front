@@ -8,11 +8,11 @@
 
 <script>
 
-import Teste from '@/components/texto';
+import Teste from '@/components/01 Inicio';
 
-import Sidebar from '@/components/sidebar';
+import Sidebar from '@/components/02 Sidebar';
 
-import ModalInicial from '@/components/ModalInicial';
+import ModalInicial from '@/components/03 ModalInicial';
 
 
     export default{
