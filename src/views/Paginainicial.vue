@@ -2,7 +2,7 @@
     <div id="app">
         <Teste/>
         <Sidebar/>
-        <ModalInicial/>
+        <ModalInicial />
     </div>
 </template>
 

@@ -1,31 +1,20 @@
 <template>
   <div>
-    <b-modal id="modal-scoped" size="xl">
+    <b-modal id="modal-scoped" size="xl" hide-header-close centered hide-footer>
       <template #modal-header="{ close }">
+       <div>
+        <br> 
         <h5>Links de Redirecionamento 🌐</h5>
+        <p>Crie seus links de redirect em poucos passos</p>
+      </div>
         <div class="botoes-acima">
-          <b-button
-            id="cadastro"
-            variant="outline-primary"
-            v-b-toggle.sidebar-no-header
-          >
+          <b-button id="cadastro" variant="outline-primary" v-b-toggle.sidebar-no-header>
             Criar um Link
           </b-button>
           <b-button size="sm" @click="close()" id="fecharmodal">
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.7844 1.30859L1.78442 16.3086M1.78442 1.30859L16.7844 16.3086"
-                stroke="#B5B9C5"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+            <svg width="13" height="13" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.7844 1.30859L1.78442 16.3086M1.78442 1.30859L16.7844 16.3086" stroke="#B5B9C5"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             <br />
             <!-- Emulate built in modal header close button action -->
@@ -60,11 +49,7 @@
 
           <div class="links-crud">
             <div class="valor-container">
-              <b-table
-                small
-                :fields="fields"
-                :items="items"
-                class="tabela-links">
+              <b-table small :fields="fields" :items="items" class="tabela-links">
                 <template #cell(id)="data">
                   <h1 class="valor">0{{ data.value }}</h1>
                 </template>
@@ -74,59 +59,37 @@
                 </template>
 
                 <template #cell(update_at)="data">
-                  <b-button
-                    id="botao"
-                    @click="editarlink(data.item)"
-                    variant="primary">Editar</b-button
-                  >
+                  <b-button id="botao" @click="editarlink(data.item)" variant="primary">Editar</b-button>
                 </template>
 
                 <template #cell(click)="data">
                   <br />
                   <p class="click0">{{ data.value }}</p>
-                  <!-- <p class="link-data">{{ data.value.max_click }}</p> -->
                 </template>
                 <p>/</p>
                 <template #cell(max_click)="data">
-                  <!-- <p class="link-data">{{ data.value.click }}</p>/ -->
                   <p class="max_click">/{{ data.value }}</p>
                 </template>
               </b-table>
               <br />
               <b-modal id="modal-1" title="Edição de Links" hide-footer>
                 <div class="edit">
-                  
+
                   <label id="ua">Url do link</label>
                   <label id="ub">Click</label>
                   <label id="uc">Max Click</label>
-                </div>  
-                <div v-if="EditarLinkRedirect" class="edit">
-                  
-                  <input
-                    v-model="EditarLinkRedirect.link"
-                    type="text"
-                    id="input_url"
-                    placeholder="Link"
-                  />
-                  <input
-                    v-model="EditarLinkRedirect.click"
-                    type="text"
-                    placeholder="Clicks"
-                    id="input_click"
-                  />
-                  <input
-                    v-model="EditarLinkRedirect.max_click"
-                    type="text"
-                    id="input_max_click"
-                    placeholder="Total-clicks"
-                  />
+                </div>
+                <div v-if="EditLink" class="edit">
+
+                  <input v-model="EditLink.link" type="text" id="input_url" placeholder="Link" />
+                  <input v-model="EditLink.click" type="text" placeholder="Clicks" id="input_click" />
+                  <input v-model="EditLink.max_click" type="text" id="input_max_click"
+                    placeholder="Total-clicks" />
                 </div>
 
                 <br />
 
-                <b-button variant="primary" @click="saveEdicao"
-                  >Salvar link</b-button
-                >
+                <b-button variant="primary" @click="saveEdicao()">Salvar link</b-button>
               </b-modal>
             </div>
           </div>
@@ -164,7 +127,7 @@ export default {
       ],
 
       items: [],
-      EditarLinkRedirect: null,
+      EditLink: null,
     };
   },
   filters: {
@@ -175,26 +138,23 @@ export default {
   methods: {
     saveEdicao() {
       this.$bvModal.hide("modal-1");
+      var that = this;
 
       var data = {
-        name: this.EditarLinkRedirect.link,
-        reference: this.EditarLinkRedirect.click,
-        description: this.EditarLinkRedirect.max_click,
+        link: this.EditLink.link,
+        click: this.EditLink.click,
+        max_click: this.EditLink.max_click,
       };
 
-      axios
-        .put(
-          "http://127.0.0.1:8000/api/redirect/" + this.EditarLinkRedirect.id,
-          data
-        )
-        .then(function () {
-          that.buscandolinks();
-        });
+      axios.put("http://127.0.0.1:8000/api/links/" + this.EditLink.id, data).then(function () {
+        console.log(data)
+
+      });
     },
     editarlink(item) {
       this.$bvModal.show("modal-1");
 
-      this.EditarLinkRedirect = item;
+      this.EditLink = item;
     },
     buscandolinks() {
       var that = this;
@@ -226,16 +186,21 @@ export default {
   background: rgba(33, 51, 210, 0.1);
   border-radius: 5px;
 }
+
 #fecharmodal {
   background-color: transparent;
   border: none;
   position: relative;
-  top: -10px;
+  top: -35px;
+  left: -5px;
+
 }
+
 .botoes-acima {
   display: flex;
   gap: 20px;
 }
+
 .container-redirects {
   display: grid;
   grid-template-columns: 1fr calc(8rem) 1fr;
@@ -251,6 +216,7 @@ export default {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
 }
+
 .botao {
   font-weight: 600;
   color: #2133d2;
@@ -260,6 +226,7 @@ export default {
   padding: 6px 20px;
   cursor: pointer;
 }
+
 #botao {
   font-weight: 600;
   color: #2133d2;
@@ -272,6 +239,7 @@ export default {
   top: 10px;
   left: 120px;
 }
+
 .flex-cotainer {
   display: flex;
   justify-content: space-between;
@@ -279,15 +247,18 @@ export default {
   border-bottom: 1px solid #ededf0;
   padding: 20px;
 }
+
 .h1 {
   font-size: 18px;
   font-weight: 600;
   color: #333333;
 }
+
 .p {
   color: #81858e;
   font-size: 14px;
 }
+
 .button {
   font-size: 14px;
   font-weight: 600;
@@ -299,43 +270,52 @@ export default {
   cursor: pointer;
   font-weight: 600;
 }
+
 .container-redirects {
   display: grid;
   grid-template-columns: 1fr calc(8rem) 1fr;
 }
+
 .container-link {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
   border-bottom: 1px solid #ededf0;
 }
+
 .redirects-esquerdo {
   border-right: 1px solid #ededf0;
 }
+
 .quantidade-links {
   font-size: 14px;
   font-weight: 600;
   color: #2133d2;
 }
+
 .tempo {
   font-size: 12px;
   color: #81858e;
 }
+
 .flex-1 {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
+
 .link {
   display: flex;
   align-items: center;
   gap: 20px;
 }
+
 .link-nome {
   color: #333333;
   font-weight: 600;
   font-size: 14px;
 }
+
 .link-data {
   font-size: 12px;
 }
@@ -347,6 +327,7 @@ export default {
   right: 200px;
   top: 34px;
 }
+
 .click0 {
   font-size: 12px;
   color: #0852ff;
@@ -354,47 +335,56 @@ export default {
   right: 185px;
   top: 10px;
 }
+
 .detalhes-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
 }
+
 .link-redirect {
   font-size: 13px;
   color: #81858e;
   position: relative;
   left: -140px;
 }
+
 .link-cliques {
   font-size: 14px;
   color: #81858e;
   position: relative;
   top: 40px;
 }
+
 .lado-direito {
   padding: 50px;
   position: relative;
   left: -120px;
   top: 10px;
 }
+
 .container-link-escolhido {
   border-bottom: 1px solid #ededf0;
 }
+
 .link-escolhido-container {
   display: flex;
   gap: 20px;
   align-items: center;
 }
+
 .link-escolhido {
   font-weight: 600;
   font-size: 20px;
   color: #000000;
 }
+
 .link-escolhido-data {
   font-size: 12px;
   color: #81858e;
 }
+
 .link-escolhido-detalhes {
   display: flex;
   gap: 20px;
@@ -402,6 +392,7 @@ export default {
   margin-top: 10px;
   margin-bottom: 15px;
 }
+
 .link-redirect-detalhes {
   color: #2133d2;
 }
@@ -413,56 +404,67 @@ export default {
   position: relative;
   top: 10px;
 }
+
 .links-crud {
   margin-top: 25px;
 }
+
 .link-criado {
   font-size: 12px;
   color: #81858e;
   position: relative;
   top: 10px;
 }
+
 .data-gerada {
   margin-top: 5px;
   margin-left: 33px;
   font-size: 12px;
   color: #2133d2;
 }
+
 .valor-container {
   display: flex;
   align-items: center;
   flex: 1;
   gap: 20px;
 }
+
 .tabela-links {
   position: relative;
   top: -35px;
   /* background-color: red; */
 }
-.edit{
+
+.edit {
   display: flex;
   gap: 10px;
 }
+
 #input_url {
   width: 200px;
 }
+
 #input_max_click {
   width: 50px;
 }
+
 #input_click {
   width: 50px;
 }
-#ua{
+
+#ua {
   position: relative;
-  left:20px;
-}
-#ub{
-  position: relative;
-  left:132px;
-}
-#uc{
-  position: relative;
-  left:135px;
+  left: 20px;
 }
 
+#ub {
+  position: relative;
+  left: 132px;
+}
+
+#uc {
+  position: relative;
+  left: 135px;
+}
 </style>

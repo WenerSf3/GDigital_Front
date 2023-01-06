@@ -4,7 +4,7 @@
       <table>
         <tbody>
           <template v-for="item in items">
-            <div id="teste-teste" @click="tabela(item.id)" class="container-left">
+            <div @click="tabela(item.id)" class="container-left">
               <div class="link-nome">{{ item.name_link }}</div>
               <div class="link-data">{{ item.created_at | moment }}</div>
               <div id="link-redirect">{{ item.url_link }}</div>
@@ -57,8 +57,15 @@ export default {
             that.Getredirects();
     });
 
-    },
+    
   },
+  tabela(id){
+    // Setar o ID da tabela, que vai aparecer do outro lado
+    axios.post("http://127.0.0.1:8000/api/redirect/", {id:id}).then(function(resp){
+      console.log(resp)
+    })
+  }
+},
   mounted() {
     this.GetRedirects();
   },
@@ -70,7 +77,6 @@ export default {
 .container-link {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   border-bottom: 1px solid #ededf0;
 }
 .redirect_table1 {
@@ -81,28 +87,29 @@ export default {
   border: 1px solid rgba(0, 208, 255, 0.393);
   cursor: pointer;
 }
-#teste-teste {
-  border: none;
+.container-left {
   width: 430px;
+  border-bottom: 1px solid #ededf0;
 }
-#teste-teste:hover {
-  border: 1px solid blue;
+.container-left:hover {
   width: 430px;
   color: blue;
   border-radius: 5px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .link-nome {
   position: relative;
+  top: 18px;
+  font-family: 'Montserrat';
 }
 .link-data {
   position: relative;
-  top: -18px;
-  left: 100px;
+
+  left: 80px;
 }
 #link-redirect {
   position: relative;
-  top: 10px;
+  top: 14px;
   left: 0px;
   right: 0px;
   bottom: 0px;

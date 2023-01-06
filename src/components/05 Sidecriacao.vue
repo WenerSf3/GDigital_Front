@@ -4,7 +4,7 @@
       <template #default="{ hide }">
         <div class="header-side">
           <h4 id="header-side-title">Criação de Link</h4>
-          <svg @click="hide" id="x-side" width="17" height="18" viewBox="0 0 17 18" fill="none"
+          <svg class="close-button" @click="hide" id="x-side" width="17" height="18" viewBox="0 0 17 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M16 1.5564L1 16.5564M1 1.5564L16 16.5564" stroke="white" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -20,17 +20,23 @@
             </p>
             <div class="links_crud">
 
-              <template v-for="item in items">
-                <div id="" @click="tabela(item.id)" class="">
+              
+              <template v-for="item,index in items">
+                <div id="" @click="tabela(item.id)" class="aaaa">
 
                   <div style="display: flex;gap: 20px;">
-                    <p style="font-weight: bold;font-size: 13px;">0{{ contador }}</p>{{ item.link }} <p>{{ item.max_click }}</p>
+                    <p style="font-weight: bold;font-size: 13px;">0{{index+1}}</p>{{ item.link }} <p>{{ item.max_click }}</p>
+                    <b-button @click="apagarlink(data.item.id)" variant="danger">Deletar</b-button>
                   </div>
                   <br>
                 </div>
               </template>
+
+              <div id="testeee"></div>
+
+
               <div id="newlinkinput"></div>
-              <b-button onclick="newlink()" class="botao_adicionar">
+              <b-button class="botao_adicionar">
                 <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.16772 1.41724V13.4172M1.16772 7.41724H13.1677" stroke="#2133D2" stroke-width="1.3"
@@ -42,9 +48,7 @@
               <div id="cadastrando_links">
                 <h3 class="url_default">URL Default</h3>
                 <p class="texto_default">
-                  Essa URL será associada ao redirecionamento apenas quando todas as
-                  outras chegarem ao limite de cliques. Ela será a uma url fixa sem
-                  limitação.
+                  Essa URL será associada ao redirecionamento apenas quando todas as outras chegarem ao limite de cliques. Ela será a uma url fixa sem limitação.
                 </p>
               </div>
             </div>
@@ -64,7 +68,6 @@ export default {
   name: "Sidecriacao",
   data() {
     return {
-      contador: "0",
       id: "0",
       id_base: "",
       link: "",
@@ -121,34 +124,16 @@ export default {
       });
       that.buscandolinks();
     },
-
+    
     /* Apagar Link*/
-
+    
     apagarlink(idlink) {
       var that = this;
-      axios
-        .delete("http://127.0.0.1:8000/api/links/" + idlink)
-        .then(function () {
-          that.buscandolinks();
-        });
+      axios.delete("http://127.0.0.1:8000/api/links/" + idlink).then(function () {
+        that.buscandolinks();
+      });
     },
-
-    /* Salvar Link*/
-
-    // salvarEdicao() {
-    //   var data = {
-    //     name: this.editItem.name,
-    //     reference: this.editItem.reference,
-    //     description: this.editItem.description,
-    //   };
-
-    //   axios
-    //     .put("http://127.0.0.1:8000/api/product/" + this.editItem.id, data)
-    //     .then(function () {
-    //       that.buscandolinks();
-    //     });
-    // },
-
+    
   },
   mounted() {
     this.buscandolinks();

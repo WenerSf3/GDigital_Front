@@ -1,9 +1,3 @@
-<template>
-    <div>
-        <h3>Tela usada apenas para exemplo de navegação. <br>
-            Clique na Logo para seguir o fluxo</h3>
-    </div>
-</template>
 
 <script>
 export default {
@@ -13,6 +7,15 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&display=swap');
+#informacao{
+    transform: translateX(10%) translateY(-10px);
+}
+.textoo {
+    position: fixed;
+    left: 7vw;
+    width: 93vw;
+    height: 100vh;
+}
 
 h3 {
     position: relative;

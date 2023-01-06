@@ -1,111 +1,61 @@
 <template>
+  <div class="textoo">
+      <div id="informacao">
+          <h3>Wener Santos
+              <br>
+              Rediasdasda
+          </h3>
+      </div>
+  </div>
+</template>
+<template>
   <div>
     <div id="Sidebar">
       <ul>
         <!--Present-->
         <li id="present" @click="$bvModal.show('modal-scoped')">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M23.978 14.4585V26.9585H3.97797V14.4585M13.978 26.9585V8.2085M13.978 8.2085H8.35297C7.52416 8.2085 6.72931 7.87926 6.14326 7.2932C5.55721 6.70715 5.22797 5.9123 5.22797 5.0835C5.22797 4.25469 5.55721 3.45984 6.14326 2.87379C6.72931 2.28774 7.52416 1.9585 8.35297 1.9585C12.728 1.9585 13.978 8.2085 13.978 8.2085ZM13.978 8.2085H19.603C20.4318 8.2085 21.2266 7.87926 21.8127 7.2932C22.3987 6.70715 22.728 5.9123 22.728 5.0835C22.728 4.25469 22.3987 3.45984 21.8127 2.87379C21.2266 2.28774 20.4318 1.9585 19.603 1.9585C15.228 1.9585 13.978 8.2085 13.978 8.2085ZM1.47797 8.2085H26.478V14.4585H1.47797V8.2085Z"
-              stroke="#2133D2"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              stroke="#2133D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </li>
         <!--capelo-->
         <li id="capelo">
-          <svg
-            width="26"
-            height="23"
-            viewBox="0 0 26 23"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M24.1848 8.21389L12.7371 1.67236L1.28943 8.21389L12.7371 14.7554M24.1848 8.21389L12.7371 14.7554M24.1848 8.21389V17.2085M12.7371 14.7554V21.2969M12.7371 14.7554L20.0963 10.667V17.2085L12.7371 21.2969M12.7371 14.7554L5.37788 10.667V17.2085L12.7371 21.2969"
-              stroke="#81858E"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              stroke="#81858E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </li>
         <!--trofel-->
         <li id="trofel">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M7.64858 22.5571H15.8255M11.737 22.5571V16.0155M18.2786 10.2917C18.2786 7.70372 18.2745 3.41136 18.2724 2.11481C18.2724 1.89794 18.1863 1.68996 18.0329 1.53662C17.8796 1.38327 17.6716 1.29712 17.4547 1.29712L6.0178 1.31041C5.80137 1.31041 5.59378 1.3962 5.4405 1.549C5.28723 1.70179 5.20078 1.90912 5.20011 2.12554C5.20011 3.68835 5.19346 8.72686 5.19346 10.2917C5.19346 13.5768 9.43523 16.0155 11.735 16.0155C14.0347 16.0155 18.2786 13.5768 18.2786 10.2917ZM18.2786 10.2917C20.6524 10.2917 22.367 7.38993 22.367 4.56788V3.75019H18.2786M5.19551 3.75019H1.10706V4.56788C1.10706 7.38993 2.82165 10.2917 5.19551 10.2917V3.75019Z"
-              stroke="#81858E"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              stroke="#81858E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </li>
         <!--usuario-->
         <li id="usuario">
-          <svg
-            width="22"
-            height="24"
-            viewBox="0 0 22 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M15.2341 6.46303L16.1316 6.52957L16.1316 6.52951L15.2341 6.46303ZM6.23949 6.46303L5.34186 6.52831L5.34186 6.52838L6.23949 6.46303ZM0.9429 21.7232L1.8286 21.883L1.82861 21.8829L0.9429 21.7232ZM20.5312 21.7232L21.4169 21.5634L21.4169 21.5633L20.5312 21.7232ZM14.3365 6.39648C14.1612 8.76168 12.3915 10.4692 10.7368 10.4692V12.2692C13.5794 12.2692 15.9063 9.56829 16.1316 6.52957L14.3365 6.39648ZM10.7368 10.4692C9.0812 10.4692 7.3092 8.76125 7.13711 6.39767L5.34186 6.52838C5.56329 9.56974 7.89507 12.2692 10.7368 12.2692V10.4692ZM7.13712 6.39774C6.97041 4.10558 8.5537 2.45688 10.7368 2.45688V0.656885C7.50267 0.656885 5.09972 3.19885 5.34186 6.52831L7.13712 6.39774ZM10.7368 2.45688C12.9142 2.45688 14.5029 4.1507 14.3365 6.39654L16.1316 6.52951C16.3741 3.25595 13.9766 0.656885 10.7368 0.656885V2.45688ZM10.7368 13.7399C6.03506 13.7399 0.997585 16.3492 0.0571893 21.5634L1.82861 21.8829C2.55835 17.8368 6.54613 15.5399 10.7368 15.5399V13.7399ZM0.057197 21.5634C-0.0299113 22.0462 0.0542315 22.5656 0.343044 22.9876C0.645692 23.4298 1.1452 23.7168 1.74219 23.7168V21.9168C1.7383 21.9168 1.74139 21.9164 1.7498 21.9185C1.75828 21.9206 1.76925 21.9244 1.78118 21.9308C1.80652 21.9444 1.82183 21.9613 1.82844 21.9709C1.83415 21.9793 1.83041 21.9775 1.82719 21.9607C1.82403 21.9441 1.82238 21.9174 1.8286 21.883L0.057197 21.5634ZM1.74219 23.7168H19.7314V21.9168H1.74219V23.7168ZM19.7314 23.7168C20.3283 23.7168 20.828 23.43 21.1309 22.9878C21.4199 22.5657 21.504 22.0462 21.4169 21.5634L19.6455 21.883C19.6517 21.9174 19.6501 21.9441 19.6469 21.9606C19.6437 21.9774 19.6399 21.9792 19.6457 21.9708C19.6523 21.9611 19.6676 21.9442 19.6929 21.9307C19.7048 21.9243 19.7157 21.9205 19.7241 21.9185C19.7324 21.9164 19.7354 21.9168 19.7314 21.9168V23.7168ZM21.4169 21.5633C20.4759 16.3492 15.4385 13.7399 10.7368 13.7399V15.5399C14.9274 15.5399 18.9153 17.8368 19.6455 21.883L21.4169 21.5633Z"
-              fill="#81858E"
-            />
+              fill="#81858E" />
           </svg>
         </li>
         <!--chat-->
         <li id="chat">
-          <svg
-            width="23"
-            height="23"
-            viewBox="0 0 23 23"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M2.42292 10.6742C1.7784 11.8321 1.46662 13.1456 1.52203 14.4697C1.57745 15.7937 1.99791 17.0766 2.73692 18.1765C2.85044 18.348 2.91432 18.4807 2.89467 18.5697C2.87501 18.6586 2.30842 21.61 2.30842 21.61C2.29479 21.6791 2.29996 21.7505 2.32338 21.8169C2.34681 21.8833 2.38763 21.9422 2.44159 21.9874C2.51358 22.0448 2.6031 22.0757 2.69515 22.0749C2.74434 22.075 2.79303 22.065 2.83815 22.0454L5.60036 20.9643C5.79046 20.8893 6.00254 20.8929 6.19005 20.9741C7.12077 21.3368 8.14978 21.5638 9.17928 21.5638C10.5608 21.5653 11.918 21.2009 13.113 20.5078M20.3367 15.0281C20.2875 14.8512 20.3957 14.6055 20.4989 14.4286C20.5304 14.3759 20.5648 14.3251 20.602 14.2762C21.4847 12.9646 21.9569 11.4198 21.9583 9.83883C21.9731 5.30805 18.1499 1.63232 13.4226 1.63232C9.29967 1.63232 5.85982 4.43826 5.05391 8.16313C4.93335 8.71522 4.87239 9.27865 4.87209 9.84374C4.87209 14.3794 8.54782 18.1534 13.2752 18.1534C14.027 18.1534 15.0393 17.9274 15.5946 17.7751C16.1499 17.6227 16.7003 17.4212 16.8428 17.3672C16.9889 17.3121 17.1437 17.2838 17.2998 17.2837C17.4701 17.283 17.6389 17.3164 17.7961 17.3819L20.5824 18.3697C20.6435 18.3955 20.7081 18.4121 20.774 18.4188C20.8783 18.4188 20.9783 18.3774 21.052 18.3037C21.1257 18.2299 21.1672 18.1299 21.1672 18.0257C21.1637 17.9807 21.1555 17.9362 21.1426 17.893L20.3367 15.0281Z"
-              stroke="#81858E"
-              stroke-width="1.8"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-            />
+              stroke="#81858E" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" />
           </svg>
         </li>
         <!--circle-->
         <li id="circle">
-          <svg
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="17.7371"
-              cy="17.5308"
-              r="17"
-              fill="#81858E"
-              fill-opacity="0.2"
-              stroke="#81858E"
-            />
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="17.7371" cy="17.5308" r="17" fill="#81858E" fill-opacity="0.2" stroke="#81858E" />
           </svg>
         </li>
       </ul>
@@ -113,78 +63,77 @@
   </div>
 </template>
 
-  <script>
+<script>
 export default {
   name: "Sidebar",
 };
 </script>
 
-  <style>
+<style>
 #Sidebar {
-  box-sizing: border-box;
 
-  position: absolute;
-  width: 98px;
-  height: 100vh;
-  left: -0.26px;
-  top: 0.38px;
+position: relative;
+width: 98px;
+height: 100vh;
+left: -0.26px;
+top: 0.38px;
 
-  background: #ffffff;
-  border: 1px solid #ededf0;
+background: #ffffff;
+border: 1px solid #ededf0;
 }
 ul {
-  list-style-type: none;
+list-style-type: none;
 }
 #present {
-  position: relative;
-  width: 25px;
-  height: 25px;
-  left: 4px;
-  top: 57.96px;
-  cursor: pointer;
+position: relative;
+width: 25px;
+height: 25px;
+left: 4px;
+top: 57.96px;
+cursor: pointer;
 
-  /* border: 2px solid #2133D2; */
+/* border: 2px solid #2133D2; */
 }
 #capelo {
-  position: relative;
-  width: 22.9px;
-  height: 19.62px;
-  left: 4px;
-  top: 140px;
+position: relative;
+width: 22.9px;
+height: 19.62px;
+left: 4px;
+top: 140px;
 
 }
 #trofel {
-  position: relative;
-  width: 21.26px;
-  height: 21.26px;
-  left: 4px;
-  top: 200px;
+position: relative;
+width: 21.26px;
+height: 21.26px;
+left: 4px;
+top: 200px;
 
 }
 #usuario {
-  position: relative;
-  width: 19.63px;
-  height: 21.26px;
-  left: 4px;
-  top: 260px;
+position: relative;
+width: 19.63px;
+height: 21.26px;
+left: 4px;
+top: 260px;
 
 }
 #chat {
-  position: relative;
-  width: 20.44px;
-  height: 20.44px;
-  left: 4px;
-  top: 320px;
+position: relative;
+width: 20.44px;
+height: 20.44px;
+left: 4px;
+top: 320px;
 
 }
 #circle {
-  box-sizing: border-box;
+box-sizing: border-box;
 
-  position: relative;
-  width: 35px;
-  height: 35px;
-  left: 0px;
-  top: 440px;
+position: relative;
+width: 35px;
+height: 35px;
+left: 0px;
+top: 440px;
 
 }
 </style>
