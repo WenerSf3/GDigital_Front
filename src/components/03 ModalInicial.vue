@@ -178,6 +178,8 @@
                 </div>
               </table>
               <br />
+
+              <!-- Editar Link -->
               <b-modal id="modal-1" title="Edição de Links" hide-footer>
                 
                 <div v-if="EditLink" class="edit">
@@ -214,7 +216,7 @@
                       </div>
                     </div>
                     <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Cancelar</b-button>
-                    <b-button variant="primary" @click="saveEdicaoredirect()">Salvar link</b-button>
+                    <b-button variant="primary" class="salvarredirectbtn" @click="saveEdicaoredirect()">Salvar Redirect</b-button>
                   </b-modal>
                 </div>
 

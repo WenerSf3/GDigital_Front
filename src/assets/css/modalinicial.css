@@ -137,6 +137,11 @@
     position: relative;
     left: 20px;
   }
+  .salvarredirectbtn{
+    position: relative;
+    left: 10px;
+    top: 8px;
+  }
   
   .flex-cotainer {
     display: flex;
