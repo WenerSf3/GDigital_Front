@@ -126,7 +126,7 @@
 
               </nav>
               
-            </div>a
+            </div>
           </template>
 
         </b-sidebar>
@@ -206,13 +206,13 @@
                       Edição de Redirect
                     </template>
                     <div v-if="editredirect" class="edit">
-                      <label>name_link</label><br>
+                      <label>Nome do link</label><br>
                       <input v-model="editredirect.name_link" class="inputedit" type="text" id="input_url" placeholder="Link" /><br><br>
                       <div style="display:flex;gap:10px;">
-                        <label>url_link</label><br>
-                        <input v-model="editredirect.url_link" class="inputedit" type="text" placeholder="Clicks" id="input_click" /><br>
+                        <label>Link</label><br>
+                        <input v-model="editredirect.url_link" class="inputedit2" type="text" placeholder="Clicks" /><br>
                         <label>total_click</label><br>
-                        <input v-model="editredirect.total_click" class="inputedit" type="text" id="input_max_click" placeholder="Total-clicks" />
+                        <input v-model="editredirect.total_click" class="inputedit" type="text" placeholder="Total-clicks" />
                       </div>
                     </div>
                     <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Cancelar</b-button>

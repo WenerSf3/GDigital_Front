@@ -452,8 +452,19 @@
     border-bottom: 2px solid rgba(46, 46, 50, 0.381);
     border-radius: 3px;
     padding: 2px;
+    padding-left: 3px;
+    position: relative;
+    width: 33px;
+    background-color: rgba(207, 207, 207, 0.175);
+  }
+  .inputedit2{
+    border: none;
+    border-bottom: 2px solid rgba(46, 46, 50, 0.381);
+    border-radius: 3px;
+    padding: 2px;
     padding-left: 10px;
     position: relative;
+    width: 170px;
     background-color: rgba(207, 207, 207, 0.175);
   }
   
