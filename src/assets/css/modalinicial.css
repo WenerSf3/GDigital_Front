@@ -1,0 +1,385 @@
+#modal-scoped {
+    position: fixed;
+    padding: 20px auto;
+    
+  }
+  
+  #cadastro {
+    width: 202.58px;
+    height: 45px;
+  
+    color: #2133D2;
+    background: rgba(33, 51, 210, 0.1);
+    border-radius: 5px;
+    border:1px solid blue;
+    
+  }
+  #cadastro:hover {
+    width: 202.58px;
+    height: 45px;
+  
+    color:white;
+    background: blue;
+    border-radius: 5px;
+    
+  }
+  
+  #fecharmodal {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top: -35px;
+    left: -5px;
+  
+  }
+  
+  .botoes-acima {
+    display: flex;
+    gap: 20px;
+  }
+  
+  #container-redirects {
+    display: grid;
+    border-bottom: 1px solid #ededf0;
+    max-height:500px;
+  }
+  
+  .modal {
+    display: flex;
+    align-content: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .botao {
+    font-weight: 600;
+    color: #2133d2;
+    background: #fff;
+    border: 1px solid #2133d2;
+    border-radius: 5px;
+    padding: 6px 20px;
+    cursor: pointer;
+  }
+  
+  #botao {
+    font-weight: 600;
+    color: #2133d2;
+    background: #fff;
+    border: 1px solid #2133d2;
+    border-radius: 3px;
+    padding: 1px 15px;
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+    left: 350px;
+  }
+  
+  .flex-cotainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ededf0;
+    padding: 20px;
+  }
+  
+  .h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+  }
+  
+  .p {
+    color: #81858e;
+    font-size: 14px;
+  }
+  
+  .button {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2133d2;
+    background: rgba(33, 51, 210, 0.1);
+    padding: 15px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .container-redirects {
+    display: grid;
+    grid-template-columns: 1fr calc(8rem) 1fr;
+  }
+  
+  .container-link {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ededf0;
+    height: 350px;
+    overflow-y: scroll;
+    width: 100%;
+  }
+  
+  .redirects-esquerdo {
+    border-right: 1px solid #ededf0;
+  }
+  
+  .quantidade-links {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2133d2;
+    
+  }
+  
+  .tempo {
+    font-size: 12px;
+    color: #81858e;
+    position: absolute;
+    left: 350px;
+  }
+  
+  .flex-1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .link {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  #link-nome {
+    color: #333333;
+    font-weight: 600;
+    font-size: 14px;
+    position: relative;
+    top: 15px;
+  }
+  
+  #link-data {
+    font-size: 12px;
+    position: relative;
+      top: 17px;
+  }
+  
+  #max_click {
+    font-size: 12px;
+    color: #0852ff;
+    position: relative;
+    right: 200px;
+    
+  }
+  
+  #clickemax {
+    font-size: 12px;
+    color: #0852ff;
+    position: relative;
+    right: 39px;
+    top: 30px;
+  }
+  
+  .detalhes-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .link-redirect {
+    font-size: 13px;
+    color: #81858e;
+    position: relative;
+    left: -140px;
+  }
+  
+  .link-cliques {
+    font-size: 14px;
+    color: #81858e;
+    position: relative;
+    top: 40px;
+  }
+  
+  .lado-direito {
+    position: relative;
+    left: 45px;
+    top: 20px;
+    width: 500px;
+  }
+  
+  .container-link-escolhido {
+    border-bottom: 1px solid #ededf0;
+  }
+  
+  .link-escolhido-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .link-escolhido {
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+  }
+  
+  .link-escolhido-data {
+    font-size: 12px;
+    color: #81858e;
+  }
+  
+  .link-escolhido-detalhes {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .link-redirect-detalhes {
+    color: #2133d2;
+  }
+  
+  #valor {
+    font-weight: 600;
+    font-size: 13px;
+    color: #2133d2;
+    position: relative;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .links-crud {
+    margin-top: 25px;
+  }
+  
+  #link-criado {
+    font-size: 12px;
+    color: #81858e;
+    position: relative;
+    top: 10px;
+    right: 82px;
+  }
+  
+  .data-gerada {
+    margin-top: 5px;
+    margin-left: 33px;
+    font-size: 12px;
+    color: #2133d2;
+  }
+  
+  .valor-container {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+    gap: 20px;
+    overflow: scroll;
+    height: 244px;  }
+  
+  .tabela-links {
+    position: relative;
+    top: -35px;
+    /* background-color: red; */
+  }
+  
+  .edit {
+    display: flex;
+    gap: 10px;
+  }
+  
+  #input_url {
+    width: 200px;
+  }
+  
+  #input_click {
+    width: 50px;
+  }
+  
+  #ua {
+    position: relative;
+    left: 20px;
+  }
+  
+  #ub {
+    position: relative;
+    left: 132px;
+  }
+  
+  #uc {
+    position: relative;
+    left: 135px;
+  }
+  
+  
+  .redirect_table1 {
+    border: none;
+    cursor: pointer;
+  }
+  
+  .redirect_table:hover {
+    border: 1px solid rgba(0, 208, 255, 0.393);
+    cursor: pointer;
+  }
+  
+  .container-left {
+    width: 430px;
+    border-bottom: 1px solid #ededf0;
+  }
+  #container-left-links {
+    width: 430px;
+    display: flex;
+    margin: 10px;
+  }
+  
+  .container-left:hover {
+    width: 430px;
+    color: blue;
+    border-radius: 5px;
+    /* cursor: pointer; */
+  }
+  
+  .link-nome {
+    position: relative;
+    top: 18px;
+    font-family: 'Montserrat';
+  }
+  
+  .link-data {
+    position: relative;
+    left: 80px;
+    top: 7px;
+  }
+  
+  #link-redirect {
+    position: relative;
+    top: 29px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+  
+  #link-cliques {
+    position: relative;
+    left: 330px;
+    right: 0px;
+    bottom: 0px;
+    top: 5px;
+  }
+  #cadastro2{
+    width: 202.58px;
+    height: 45px;
+  
+    color: white;
+    background: blue;
+    border-radius: 5px;
+    border:1px solid blue;
+    position: relative;
+    right: -350px;
+    top: 145px;
+  }
+  
