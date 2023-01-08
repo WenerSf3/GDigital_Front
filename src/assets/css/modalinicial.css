@@ -77,6 +77,66 @@
     top: 0px;
     left: 350px;
   }
+  #copiar{
+    font-weight: 600;
+    color: #2133d2;
+    background: #fff;
+    border: 1px solid #2133d2;
+    border-radius: 3px;
+    padding: 1px 15px;
+    cursor: pointer;
+    position: relative;
+    top: 30px;
+    left: 0px;
+  }
+  #copiar:hover{
+    font-weight: 600;
+    color: #fff;
+    background: #2133d2;
+    border: 1px solid #2133d2;
+    border-radius: 3px;
+    padding: 1px 15px;
+    cursor: pointer;
+    position: relative;
+    top: 30px;
+    left: 0px;
+  }
+  #botao2{
+    font-weight: 600;
+    color: #2133d2;
+    background: #fff;
+    border: 1px solid #2133d2;
+    border-radius: 3px;
+    padding: 1px 15px;
+    cursor: pointer;
+    position: relative;
+    top: 40px;
+    left: 10px;
+  }
+  #botao2:hover{
+    font-weight: 600;
+    color: #fff;
+    background: #2133d2;
+    border: 1px solid #2133d2;
+    border-radius: 3px;
+    padding: 1px 15px;
+    cursor: pointer;
+    position: relative;
+    top: 40px;
+    left: 10px;
+  }
+  .btn-delete{
+    background-color: red;
+    color: #fff;
+    position: relative;
+    left: 20px;
+  }
+  .btn-delete:hover{
+    background-color: red;
+    color: #fff;
+    position: relative;
+    left: 20px;
+  }
   
   .flex-cotainer {
     display: flex;
@@ -288,7 +348,7 @@
   }
   
   .edit {
-    display: flex;
+
     gap: 10px;
   }
   
@@ -381,5 +441,14 @@
     position: relative;
     right: -350px;
     top: 145px;
+  }
+  .inputedit{
+    border: none;
+    border-bottom: 2px solid rgba(46, 46, 50, 0.381);
+    border-radius: 3px;
+    padding: 2px;
+    padding-left: 10px;
+    position: relative;
+    background-color: rgba(207, 207, 207, 0.175);
   }
   

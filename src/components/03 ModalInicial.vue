@@ -31,7 +31,7 @@
       <div class="container-redirects">
         <div class="redirects-esquerdo">
           <div id="container-redirects">
-            <h1 class="quantidade-links">04 links</h1>
+            <h1 class="quantidade-links">{{redirectt.length}} links</h1>
             <p class="tempo">Clique em tempo real</p>
           </div>
           <!--esqueda superior -->
@@ -46,6 +46,8 @@
                     </div>
                     <a id="link-redirect"> {{ itemsb.url_link }} </a>
                     <div id="link-cliques">👉 0/ {{ itemsb.total_click }}</div>
+
+                    
                     <br />
                   </div>
                 </div>
@@ -53,7 +55,7 @@
             </div>
           </div>
         </div>
-
+        
         <b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" no-header right shadow>
           <template #default="{ hide }">
             <div class="header-side">
@@ -63,10 +65,10 @@
                 <path d="M16 1.5564L1 16.5564M1 1.5564L16 16.5564" stroke="white" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-
+              
               <nav class="mb-3">
                 <h3 class="titulo_link">Título do Link</h3>
-
+                
                 <input class="link_legal" v-model="nameredirect" placeholder="Link Legal" />
                 <h2 class="url_original">URL original</h2>
                 <p class="texto-informativo">
@@ -80,7 +82,7 @@
                         <p style="font-weight: bold; font-size: 13px">
                           {{ index + 1 }}
                         </p>
-
+                        
                         <p class="cada-link" style="color: grey">
                           {{ item.link }}
                         </p>
@@ -94,9 +96,9 @@
                       <p></p>
                       <input class="input" style="border: none" type="text" v-model="url_link"
                         placeholder="Insira a URL original" />
-                      <br />
+                        <br />
                       <input style="border: none" class="input2" v-model="qtdclick" type="text"
-                        placeholder="qtd cliques" />
+                      placeholder="qtd cliques" />
                     </div>
                   </div>
 
@@ -105,7 +107,7 @@
                     <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M7.16772 1.41724V13.4172M1.16772 7.41724H13.1677" stroke="#2133D2" stroke-width="1.3"
                         stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                      </svg>
                     Adicionar URL
                   </button>
                   <div id="cadastrando_links">
@@ -123,12 +125,13 @@
                 </div>
 
               </nav>
-
-            </div>
+              
+            </div>a
           </template>
 
         </b-sidebar>
-
+        
+        <!-- redirect direitaa -->
         <div class="lado-direito">
           <div class="container-link-escolhido" v-if="redirectt.length >= 1">
             <div class="link-escolhido-container">
@@ -138,9 +141,13 @@
               <p class="link-escolhido-data">
                 {{ redirectt[selecionar - 1].created_at | moment }}
               </p>
+              <div style="position:absolute;left: 250px;">
+                <b-button class="mt-3" id="copiar"  block @click="copiarlinkredirect(redirectt[selecionar - 1].name_link)"> Copiar</b-button>
+              <button id="botao2"  @click="$bvModal.show('bv-modal-example',link); editredirect = redirectt[selecionar - 1]" variant="primary">Editar</button>
               <button type="button" class="btn-delete" @click="apagarredirect(redirectt[selecionar - 1].id)">
                 Deletar
               </button>
+              </div>
             </div>
             <div class="link-escolhido-detalhes">
               <p class="link-redirect-detalhes">
@@ -152,6 +159,7 @@
             Selecione um link por favor
           </div>
 
+          <!-- links direita -->
           <div class="links-crud">
             <div class="valor-container">
               <table>
@@ -171,21 +179,46 @@
               </table>
               <br />
               <b-modal id="modal-1" title="Edição de Links" hide-footer>
-                <div class="edit">
-                  <label id="ua">Url do link</label>
-                  <label id="ub">Click</label>
-                  <label id="uc">Max Click</label>
-                </div>
+                
                 <div v-if="EditLink" class="edit">
-                  <input v-model="EditLink.link" type="text" id="input_url" placeholder="Link" />
-                  <input v-model="EditLink.click" type="text" placeholder="Clicks" id="input_click" />
-                  <input v-model="EditLink.max_click" type="text" id="input_max_click" placeholder="Total-clicks" />
+                  <label>Url do link</label><br>
+                  <input v-model="EditLink.link" class="inputedit" type="text" id="input_url" placeholder="Link" /><br><br>
+                  <div style="display:flex;gap:10px;">
+                    <label>Click</label><br>
+                    <input v-model="EditLink.click" class="inputedit" type="text" placeholder="Clicks" id="input_click" /><br>
+                    <label>Max Click</label><br>
+                    <input v-model="EditLink.max_click" class="inputedit" type="text" id="input_max_click" placeholder="Total-clicks" />
+                  </div>
                 </div>
 
                 <br />
 
                 <b-button variant="primary" @click="saveEdicao()">Salvar link</b-button>
               </b-modal>
+              
+              <!-- Editar Redirects -->
+                
+                <div>
+                  <b-modal id="bv-modal-example" hide-footer>
+                    <template #modal-title>
+                      Edição de Redirect
+                    </template>
+                    <div v-if="editredirect" class="edit">
+                      <label>name_link</label><br>
+                      <input v-model="editredirect.name_link" class="inputedit" type="text" id="input_url" placeholder="Link" /><br><br>
+                      <div style="display:flex;gap:10px;">
+                        <label>url_link</label><br>
+                        <input v-model="editredirect.url_link" class="inputedit" type="text" placeholder="Clicks" id="input_click" /><br>
+                        <label>total_click</label><br>
+                        <input v-model="editredirect.total_click" class="inputedit" type="text" id="input_max_click" placeholder="Total-clicks" />
+                      </div>
+                    </div>
+                    <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Cancelar</b-button>
+                    <b-button variant="primary" @click="saveEdicaoredirect()">Salvar link</b-button>
+                  </b-modal>
+                </div>
+
+                
             </div>
           </div>
         </div>
@@ -202,14 +235,18 @@ export default {
 
   data() {
     return {
-      id: "0",
+      id: 0,
       id_base: "",
       link: "",
       click: "",
       max_click: 0,
+
+      name_link:"",
+      url_link: "",
+      total_click: 0,
+
       urldefault: "",
       nameredirect: "",
-      url_link: "",
       qtdclick: "",
       clickin: 0,
       id_basein: 1,
@@ -218,6 +255,7 @@ export default {
 
       itemsb: {},
       EditLink: [],
+      editredirect:{},
       rlinks: [],
       redirectt: [],
       selecionar: 1,
@@ -232,6 +270,7 @@ export default {
   methods: {
     ClickRedirect(id) {
       this.selecionar = id;
+
 
       var that = this;
 
@@ -260,12 +299,30 @@ export default {
           console.log(data);
         });
     },
+
+
     editarlink(item) {
       this.$bvModal.show("modal-1");
-
+      
       this.EditLink = item;
     },
 
+    saveEdicaoredirect() {
+      this.$bvModal.hide('bv-modal-example');
+
+      var data = {
+        name_link: this.editredirect.name_link,
+        url_link: this.editredirect.url_link,
+        total_click: this.editredirect.total_click,
+      };
+
+      axios
+        .put("http://127.0.0.1:8000/api/redirect/" + this.selecionar, data)
+        .then(function (resp) {
+          console.log(resp);
+        });
+    },
+    
     buscandoredirects() {
       var that2 = this;
       axios.get("http://127.0.0.1:8000/api/redirect").then(function (resp) {
@@ -282,6 +339,9 @@ export default {
           document.getElementById("refresh").click();
         });
     },
+    copiarlinkredirect(link) {
+                navigator.clipboard.writeText(link)
+            },
 
     /* Buscar Links*/
 
@@ -293,11 +353,6 @@ export default {
       });
     },
 
-    /* Salvar Links*/
-
-    cadastroredirect() {
-
-    },
 
     /* criar input Links*/
 
@@ -324,8 +379,8 @@ export default {
       })
       axios.post("http://127.0.0.1:8000/api/redirect/", { name_link: this.nameredirect, url_link: this.urldefault, total_click: total }).then(()=>{
         this.buscandoredirects()
-        this.id_basein = this.redirectt.length+1
-        this.items = []
+        this.id_basein = this.redirectt.length+1;
+        this.items = [];
       })
     }
   },
