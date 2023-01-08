@@ -142,7 +142,7 @@
                 {{ redirectt[selecionar - 1].created_at | moment }}
               </p>
               <div style="position:absolute;left: 250px;">
-                <b-button class="mt-3" id="copiar"  block @click="copiarlinkredirect(redirectt[selecionar - 1].name_link)"> Copiar</b-button>
+                <b-button class="mt-3" id="copiar"  block @click="copiarlinkredirect(redirectt[selecionar - 1].url_link)"> Copiar</b-button>
               <button id="botao2"  @click="$bvModal.show('bv-modal-example',link); editredirect = redirectt[selecionar - 1]" variant="primary">Editar</button>
               <button type="button" class="btn-delete" @click="apagarredirect(redirectt[selecionar - 1].id)">
                 Deletar
@@ -343,7 +343,7 @@ export default {
     },
     copiarlinkredirect(link) {
                 navigator.clipboard.writeText(link)
-            },
+            },
 
     /* Buscar Links*/
 
